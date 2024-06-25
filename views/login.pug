@@ -1,0 +1,127 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      content="width=device-width, initial-scale=1.0" 
+      name="viewport"
+      )
+    title Login Page
+    style.
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, serif;
+        background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url('/images/login-bg2.jpg') no-repeat center center;
+        background-size: cover;
+        }
+        .container {
+        padding: 30px;
+        border-radius: 10px;
+        }
+        .login-box {
+        max-width: 400px;
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        }
+        .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #333;
+        }
+        .textbox {
+        position: relative;
+        margin-bottom: 30px;
+        }
+        .textbox input {
+        width: 100%;
+        padding: 10px;
+        background: #f1f1f100;
+        border: #131212;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-right-width: 1px;
+        border-right-style: solid;
+        outline: none;
+        color: #333;
+        font-size: 14px;
+        border-radius: 5px;
+        }
+        .btn {
+        width: 100%;
+        background: black;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        color: #fff;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+        }
+        .btn:hover {
+        background: white;
+        color:black;
+        }
+        .social-login {
+        margin: 20px 0;
+        }
+        .social-login p {
+        margin: 0;
+        padding: 0;
+        color: #333;
+        font-size: 14px;
+        }
+        .social-btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        margin: 0 10px;
+        background-size: cover;
+        cursor: pointer;
+        }
+     
+        .signup-link {
+        display: block;
+        margin-top: 20px;
+        color: #333;
+        font-size: 14px;
+        text-decoration: none;
+        }
+        .signup-link:hover {
+        text-decoration: underline;
+        }
+  body
+    .container
+      .login-box
+        h2 Sign In
+        form(method='POST', action='/userapi/login')
+          .textbox
+            input(
+              required="" 
+              name="username" 
+              placeholder="username or email" 
+              type="text"
+              )
+          .textbox
+            input(
+              required="" 
+              name="password" 
+              placeholder="password" 
+              type="password"
+              )
+          button.btn(type="submit") SIGN IN
+          
+        p Not registered yet?
+            
+          a.signup-link(href="#") Sign Up

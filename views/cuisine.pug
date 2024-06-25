@@ -1,0 +1,165 @@
+html
+  head
+    title #{title} recipes
+    link(
+      crossorigin="anonymous" 
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" 
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" 
+      rel="stylesheet"
+      )
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+    style.
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f7f0e6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background: #385740;
+        padding: 20px;
+        display: flex;
+        color:white;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      header .logo {
+        font-size: 24px;
+        font-weight: bold;
+        
+      }
+      header nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 16px;
+        color:white;
+      }
+      header nav a:hover {
+        text-decoration: bold;
+      }
+      .banner {
+        width: 100%;
+        height: 400px;
+        background: url('/images/home-banner.png') no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 36px;
+        font-weight: bold;
+      }
+      .content {
+        padding: 20px;
+      }
+      h2 {
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 2px solid green;
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+      .recipes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .recipe-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 15px;
+        width: calc(29.333% - 20px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+      .recipe-card:hover {
+        transform: translateY(-10px);
+      }
+      .recipe-card img {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+      }
+      .recipe-card h3 {
+        margin: 10px 0;
+        font-size: 20px;
+        color: #e76f51;
+      }
+      .recipe-card p {
+        color: #666;
+        font-size: 14px;
+      }
+      .recipe-card .cuisine {
+        color: #999;
+        font-size: 12px;
+      }
+      .recipe-card .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+      .recipe-card .actions button {
+        background: #2a9d8f;
+        border: none;
+        color: #fff;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+      .recipe-card .actions button:hover {
+        background: #21867a;
+      }
+      .cuisines-container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+      .cuisine-container {
+        text-align: center;
+      }
+      .cuisine-container img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+        border: 2px solid #ccc;
+      }
+      .cuisine-caption {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+  body
+    header
+      .logo Taste The Best Food
+      nav
+        a(href="/home/profile") Profile
+        a(href="/logout") Logout
+    .content
+      .recipes
+        each recipe, index in recipes
+          .recipe-card
+            if recipe.image
+              img(src=recipe.image, alt=recipe.title)
+            h3 #{recipe.title}
+            p #{recipe.description}
+            .cuisine #{recipe.cuisine}
+            .col-12
+              each star, starIndex in [1, 2, 3, 4, 5]
+                span(id='recipe' + index + '-star' + (starIndex + 1)).fa.fa-star
+                script(type="text/javascript").
+                  $(document).ready(function () {
+                    var recipe = !{JSON.stringify(recipe)};
+                    let totalRating = recipe.totalRating;
+                    for (let i = 0; i < totalRating; i++) {
+                      document.getElementById('recipe' + #{index} + '-star' + (i + 1)).style.color = 'orange';
+                    }
+                  });
+            .actions
+              form(action="/home/viewRecipe" method="GET")
+                  input(type="hidden" name="id" value=recipe._id)
+                  button(type="submit") view recipe

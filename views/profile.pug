@@ -1,0 +1,141 @@
+doctype html
+html
+  head
+    title Profile Page
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #1a1a1a;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+      }
+      header {
+        background: #333;
+        color: #fff;
+        padding-top: 30px;
+        min-height: 70px;
+        border-bottom: #77aaff 3px solid;
+      }
+      header h1 {
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 24px;
+      }
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px 0;
+      }
+      .card {
+        background: #333;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 20px;
+        width: calc(33.333% - 40px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+      }
+      .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+      }
+      .card h3 {
+        margin: 10px 0;
+        font-size: 18px;
+        color: #fff;
+      }
+      .card p {
+        color: #ccc;
+        font-size: 14px;
+      }
+      .card .price {
+        font-size: 18px;
+        color: #fff;
+        margin-top: 10px;
+      }
+      .card .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+      .card .actions button {
+        background: #f4a261;
+        border: none;
+        color: #fff;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .card .actions button:hover {
+        background: #e76f51;
+      }
+      .add-recipe-button {
+        display: block;
+        background: #e76f51;
+        color: #fff;
+        padding: 30px 20px;
+        align:center;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 20px 0;
+        transition: background 0.3s;
+      }
+      .add-recipe-button:hover {
+        background: #555;
+      }
+      footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+  body
+    header
+      h1 Profile of #{username}
+    .container
+      a.add-recipe-button(href="/home/profile/addrecipe") + Add New Recipe
+      if recipes.length
+        .cards
+          each recipe in recipes
+            .card
+              if recipe.image
+                img(src=recipe.image, alt=recipe.title)
+              h3 #{recipe.title}
+              .price #{recipe.cuisine}
+              p #{recipe.description}
+              .actions
+                form(action="/home/profile/updaterecipe" method="GET")
+                  input(type="hidden" name="id" value=recipe._id)
+                  input(type="hidden" name="title" value=recipe.title)
+                  input(type="hidden" name="description" value=recipe.description)
+                  input(type="hidden" name="ingredients" value=recipe.ingredients.join(','))
+                  input(type="hidden" name="details" value=recipe.details)
+                  input(type="hidden" name="cuisine" value=recipe.cuisine)
+                  if recipe.image
+                    input(type="hidden" name="image" value=recipe.image)
+                  button(type="submit") Update
+                form(action="/home/profile/deleterecipe" method="POST")
+                  input(type="hidden" name="id" value=recipe._id)
+                  button(type="submit") Delete
+      else
+        p You have not created any recipes yet.
+      
+    footer
+      p &copy; 2024 Your Recipe Sharing Website

@@ -1,0 +1,135 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      content="width=device-width, initial-scale=1.0" 
+      name="viewport"
+      )
+    title Food Lovers
+    style.
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+      header {
+        background-color: #0066cc;
+        padding: 20px 0;
+        color: #fff;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      .logo span {
+        color: #ffa500;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+      nav ul li a.signup {
+        background-color: #ffa500;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      main {
+        background-color: #e9f3ff;
+        padding-left:20px;
+      }
+      .hero {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .hero-content {
+        flex: 1;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+      .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom:25px;
+        
+      }
+      .btn {
+        background-color: #0066cc;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      .hero-image {
+        flex: 1;
+        text-align: center;
+      }
+      .hero-image img {
+        max-width: 100%;
+        margin-left:20px;
+      }
+      @media (max-width: 768px) {
+        .hero {
+        flex-direction: column;
+        text-align: center;
+        }
+        .hero-content h1 {
+        font-size: 2rem;
+        }
+        .hero-content p {
+        font-size: 1rem;
+        }
+      }
+  body
+    header
+      .container
+        .logo
+          | Recipe
+          span Wiz
+        nav
+          ul
+            li
+              a(href="#") Home
+            li
+              a(href="login") Login
+            li
+              a.signup(href="#") Sign Up
+    main
+      .hero
+        .hero-content
+          h1
+            | Learn. Cook. Share.
+            br
+            | Cooking Made Easy.
+          p
+            | Say goodbye to long and frustrating food blogs and recipe videos. Access our recipe cards to prepare any dish in minutes.
+          a.btn(href="/home") Browse Dish
+        .hero-image
+          img(
+            alt="Delicious Dish" 
+            src="images/index-bg.jpg"
+            )
