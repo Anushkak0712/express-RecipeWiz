@@ -25,6 +25,7 @@ const storage_existing = multer.diskStorage({
     cb(null, `recipe${req.body.id}.jpg`);
   }
 });
+
 const upload_new = multer({ storage: storage_new });
 const upload_existing = multer({ storage: storage_existing });
 
@@ -58,8 +59,8 @@ router.post('/addrecipe',upload_new.single('image'),auth.isLoggedIn, async(req,r
       ingredients: ingredients.split(','), // Assuming ingredients are provided as a comma-separated string
       details,
       timeRequired,
-      image: null ,
-      sharedAt:new Date()// Placeholder for the image path
+      image: null ,// Placeholder for the image path
+      sharedAt:new Date()
     });
 
     // Save the recipe to get the ID

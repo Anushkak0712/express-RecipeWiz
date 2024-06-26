@@ -4,24 +4,27 @@ const cookieParser = require('cookie-parser')
 const router = express.Router();
 const user=require('../models/users');
 const auth = require('../auth');
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 /* GET users listing. */
 
 router.post('/register', async(req,res)=> {
   if(req.cookies.jwt) return res.redirect('/profile');
   try{
-    const newUser=new user(req.body);
+    const {username,email,password}=req.body;
+    const hashedpass=bcrypt.hashSync(password, saltRounds);
+
+    const newUser=new user({username,email,password:hashedpass});
     await newUser.save().
     then((savedUser)=>{
       console.log(savedUser);
       //res.status(201).json({msg:"user added successfully"})})
-      var username=req.body.username;
       const payload = {
         username
       };
       const token = auth.generateToken(payload);
       res.cookie('jwt', token,{sameSite: 'None'});
-      return res.redirect('http://localhost:3011/profile')
+      return res.redirect('/home/profile')
     })
     .catch((error)=>{console.log(error);
       if (error.code===11000 && error.keyPattern && error.keyPattern.email){
