@@ -10,7 +10,7 @@ html(lang="en")
     style.
       body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background-color: #a09a82;
         margin: 0;
         padding: 0;
         display: flex;
@@ -18,12 +18,22 @@ html(lang="en")
         align-items: center;
         height: 100vh;
         }
+      header {
+        background: #385740;
+        padding: 40px;
+        display: flex;
+        color:white;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
         .recipe-container {
-        background-color: #fff;
+        margin-top:40px;
+        background-color: #c4bd9f;
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 400px;
+        width: 800px;
         }
         .recipe-container h2 {
         text-align: center;
@@ -37,11 +47,13 @@ html(lang="en")
         .recipe-container input,
         .recipe-container textarea,
         .recipe-container select {
-        width: 100%;
+        width: 95%;
         padding: 10px;
         margin-bottom: 10px;
-        border: 1px solid #ccc;
+        margin-left:10px;
+        border: 1px solid #a09a82;
         border-radius: 5px;
+        background-color:#c4bd9f;
         }
         .recipe-container textarea {
         resize: vertical;
@@ -50,7 +62,7 @@ html(lang="en")
         .recipe-container button {
         width: 100%;
         padding: 10px;
-        background-color: #28a745;
+        background-color: #385740;
         border: none;
         border-radius: 5px;
         color: #fff;
@@ -61,7 +73,8 @@ html(lang="en")
         }
   body
     .recipe-container
-      h2 Create New Recipe
+      header 
+        h1 Add new recipe
       form(
         method="POST" action="/home/profile/addrecipe" enctype="multipart/form-data")
         input(type='file', name='image')

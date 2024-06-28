@@ -6,21 +6,13 @@ html(lang="en")
       content="width=device-width, initial-scale=1.0" 
       name="viewport"
       )
-    title Food Lovers
+    title RecipeWiz
+    link(rel="stylesheet", href="stylesheets/style.css")
     style.
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        color: #333;
-      }
-      header {
-        background-color: #0066cc;
-        padding: 20px 0;
-        color: #fff;
       }
       .container {
         display: flex;
@@ -30,31 +22,17 @@ html(lang="en")
         margin: 0 auto;
         padding: 0 20px;
       }
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
       .logo span {
         color: #ffa500;
       }
-      nav ul {
-        list-style: none;
-        display: flex;
-        gap: 20px;
-      }
-      nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1rem;
-      }
-      nav ul li a.signup {
+      nav a.signup {
         background-color: #ffa500;
         padding: 10px 20px;
         border-radius: 5px;
         font-weight: bold;
       }
       main {
-        background-color: #e9f3ff;
+        background-color: #a09a82;
         padding-left:20px;
       }
       .hero {
@@ -76,8 +54,8 @@ html(lang="en")
         
       }
       .btn {
-        background-color: #0066cc;
-        color: #fff;
+        background-color: #2a4230;
+        color: white;
         padding: 10px 20px;
         text-decoration: none;
         border-radius: 5px;
@@ -106,18 +84,13 @@ html(lang="en")
       }
   body
     header
-      .container
-        .logo
-          | Recipe
-          span Wiz
-        nav
-          ul
-            li
-              a(href="#") Home
-            li
-              a(href="login") Login
-            li
-              a.signup(href="#") Sign Up
+      .logo
+        | Recipe
+        span Wiz
+      nav
+        a(href="#") Home
+        a(href="login") Login
+        a.signup(href="#") Sign Up
     main
       .hero
         .hero-content
@@ -131,5 +104,7 @@ html(lang="en")
         .hero-image
           img(
             alt="Delicious Dish" 
-            src="images/index-bg.jpg"
+            src="images/index-bg-2.jpg"
             )
+    footer
+      p &copy; 2024 Your Recipe Sharing Website
