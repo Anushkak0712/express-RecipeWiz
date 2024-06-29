@@ -1,9 +1,8 @@
 doctype html
-html(lang="en")
+html
   head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Recipe View
+    title Recipe
+    link(rel="stylesheet" href="/path/to/your/css/recipe.css")
     link(
       crossorigin="anonymous" 
       integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" 
@@ -14,95 +13,150 @@ html(lang="en")
     style.
       body {
         font-family: Arial, sans-serif;
-        background-color: #fff;
-        color: #333;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .recipe-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .recipe-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+
+      .image-container {
+        position: relative;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .recipe-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .recipe-title h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .recipe-title p {
+        margin: 0;
+        font-size: 16px;
+        color: #555;
+      }
+
+      .recipe-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+
+      .recipe-info span {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .recipe-content {
+        display: flex;
+        padding: 20px;
+        margin-right:30px;
+      }
+
+      .ingredients, .directions {
+        padding: 10px;
+      }
+      .ingredients{
+        flex: 0 0 30%;
+      }
+      .directions{
+        flex: 0 0 70%;
+      }
+
+      .ingredients h2, .directions h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .ingredients ul, .directions ol {
         margin: 0;
         padding: 0;
       }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
+
+      .ingredients li, .directions li {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: black;
       }
-      .header {
-        text-align: center;
+
+      .notes {
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ddd;
       }
-      .header h1 {
-        color: #28a745; /* Primary Color */
-      }
-      .header p {
-        color: #6c757d; /* Secondary Color */
-        margin: 5px 0;
-      }
-      .content {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-      .image-container {
-        flex: 1;
-        position: relative;
-        width: 100%;
-        max-width: 400px; /* Optional: Limit the max width */
-        
-        overflow: hidden;
-        border-radius: 5px;
-      }
-      .image-container img {
-        margin:40px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-      .ingredients {
-        flex: 1;
-        min-width: 300px;
-      }
-      .ingredients h2, .instructions h2 {
-        color: #dc3545; /* Accent Color */
-        border-bottom: 2px solid #dc3545;
-        padding-bottom: 5px;
-      }
-      .instructions {
-        margin-top: 20px;
-      }
-      .instructions ol {
-        padding-left: 20px;
-      }
-      .instructions li {
+
+      .notes h2 {
+        font-size: 20px;
         margin-bottom: 10px;
       }
+
+      .notes p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+      }
   body
-    .container
-      .header
-        h1 #{recipe.title}
-        p Rating: #{recipe.totalRating}
-        .col-12
-          span#1star.fa.fa-star
-          span#2star.fa.fa-star
-          span#3star.fa.fa-star
-          span#4star.fa.fa-star
-          span#5star.fa.fa-star
-        script(type="text/javascript").
-          $(document).ready(function () {
-            var recipe = !{JSON.stringify(recipe)};
-            let totalRating = recipe.totalRating;
-            for (let i = 0; i < totalRating; i++) {
-              document.getElementById((i+1)+'star').style.color='orange'
-            }
-            });
-        p
-          | Cuisine: 
-          span #{recipe.cuisine}
-        p Author: #{recipe.username}
-        p Date: #{recipe.sharedAt}
-      .content
+    .recipe-container
+      .recipe-header
         .image-container
-          img(src='/images/login-bg2.jpg', alt=recipe.title)
+          img(src=recipe.image alt="Vegetable Pirogue")
+          .recipe-title
+            h1 #{recipe.title}
+        .recipe-info
+          span Rating:
+            .col-12
+              span#1star.fa.fa-star
+              span#2star.fa.fa-star
+              span#3star.fa.fa-star
+              span#4star.fa.fa-star
+              span#5star.fa.fa-star
+              script(type="text/javascript").
+                $(document).ready(function () {
+                  var recipe = !{JSON.stringify(recipe)};
+                  let totalRating = recipe.totalRating;
+                  for (let i = 0; i < totalRating; i++) {
+                    document.getElementById((i+1)+'star').style.color='orange'
+                  }
+                  });
+          span Cuisine: #{recipe.cuisine}
+          span Cooking Time: #{recipe.timeRequired}
+      .recipe-content
         .ingredients
           h2 Ingredients
           if recipe.ingredients && recipe.ingredients.length
@@ -111,26 +165,25 @@ html(lang="en")
                 li #{ingredient}
           else
             p No ingredients listed.
-      .instructions
-        h2 Instructions
-        if recipe.details
+        .directions
+          h2 Directions
+          if recipe.details
           ul
             each step in recipe.details.split('\n')
               li #{step}
-        form(
-        method="POST" 
-        action="/home/viewRecipe/rating"
-        )
-            label(for="star") Rating
-            select#star(
-                required="" 
-                name="star"
-                )
-                option(value="5") 5
-                option(value="4") 4
-                option(value="3") 3
-                option(value="2") 2
-                option(value="1") 1
-            input(type="hidden" name="recipe_id" value=recipe._id)
-            button(type="submit") rate
-            
+      form(
+      method="POST" 
+      action="/home/viewRecipe/rating"
+      )
+          label(for="star") Rating
+          select#star(
+              required="" 
+              name="star"
+              )
+              option(value="5") 5
+              option(value="4") 4
+              option(value="3") 3
+              option(value="2") 2
+              option(value="1") 1
+          input(type="hidden" name="recipe_id" value=recipe._id)
+          button(type="submit") Rate

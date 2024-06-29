@@ -1,7 +1,18 @@
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #c3beaa;
+  --color-brand: #312f2f;
+  --font-fam: 'Lato', sans-serif;
+  --height: 5rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+  }
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f7f0e6;
-  color: #333;
+  background-color: #6d6253;
+  color: #f6f5e8;
   margin: 0;
   padding: 0;
 }
@@ -14,16 +25,24 @@ header {
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+header h2 {
+  color:#c3beaa;
+}
 header .logo {
+  margin-left:40px;
   font-size: 24px;
   font-weight: bold;
   
 }
+header .logo span{
+  color:rgb(233, 195, 8);
+}
 header nav a {
   margin: 0 10px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   color:white;
+
 }
 header nav a:hover {
   text-decoration: bold;
@@ -42,8 +61,8 @@ header nav a:hover {
 .content {
   padding: 20px;
 }
-h2 {
-  color: #333;
+h1 {
+  color: #fcf3cb;
   margin-bottom: 20px;
   border-bottom: 2px solid green;
   display: inline-block;
@@ -55,7 +74,7 @@ h2 {
   justify-content: space-around;
 }
 .recipe-card {
-  background: #fff;
+  background: #312f2f;
   border: 1px solid #a09a82;
   border-radius: 10px;
   margin: 10px;
@@ -74,10 +93,10 @@ h2 {
 .recipe-card h3 {
   margin: 10px 0;
   font-size: 20px;
-  color: #e76f51;
+  color: #bea218;
 }
 .recipe-card p {
-  color: #666;
+  color: #e6e6e6;
   font-size: 14px;
 }
 .recipe-card .cuisine {
@@ -124,8 +143,8 @@ h2 {
 }
 .add-recipe-button {
   display: block;
-  background: #e76f51;
-  color: #fff;
+  background: #2f2d2c;
+  color: #bea218;
   padding: 30px 20px;
   text-align: center;
   text-decoration: none;
@@ -141,7 +160,6 @@ footer {
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  position: fixed;
   bottom: 0;
   width: 100%;
 }
@@ -149,13 +167,64 @@ footer {
   display:flex;
   justify-content:space-between;
 }
+.topic h1{
+  color:#c3beaa;
+  border-bottom: 2px solid rgb(43, 42, 39);
+}
+.topic h1 a{
+  padding:15px;
+  background-color: #2f2d2c;
+  border-radius: 10%;
+  text-decoration: none;
+  color:#c3beaa;
+}
+
 h2 {
   color: #333;
   margin-bottom: 20px;
-  border-bottom: 2px solid green;
+  border-bottom: 2px solid rgb(43, 42, 39);
   display: inline-block;
   padding-bottom: 5px;
 }
 a{
   text-decoration: none;
 }
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+

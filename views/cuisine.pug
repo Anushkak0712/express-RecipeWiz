@@ -11,10 +11,11 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header
-      .logo Taste The Best Food
-      nav
-        a(href="/home/profile") Profile
-        a(href="/logout") Logout
+      nav 
+        a(href="/home") &lt Back to home
+      .logo
+        | Recipe
+        span Wiz
     .content
       .recipes
         each recipe, index in recipes
