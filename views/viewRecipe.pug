@@ -50,19 +50,39 @@ html
           ul
             each step in recipe.details.split('\n')
               li #{step}
-      form(
-      method="POST" 
-      action="/home/viewRecipe/rating"
-      )
-          label(for="star") Rating
-          select#star(
-              required="" 
-              name="star"
-              )
-              option(value="5") 5
-              option(value="4") 4
-              option(value="3") 3
-              option(value="2") 2
-              option(value="1") 1
+      form(method="POST" action="/home/viewRecipe/rating").rating
+        .rating
+          input#star5.radio-btn.hide(
+            value="5" 
+            type="radio" 
+            name="star"
+            )
+          label(for="star5") ☆
+          input#star4.radio-btn.hide(
+            value="4" 
+            type="radio" 
+            name="star"
+            )
+          label(for="star4") ☆
+          input#star3.radio-btn.hide(
+            value="3" 
+            type="radio" 
+            name="star"
+            )
+          label(for="star3") ☆
+          input#star2.radio-btn.hide(
+            value="2" 
+            type="radio" 
+            name="star"
+            )
+          label(for="star2") ☆
+          input#star1.radio-btn.hide(
+            value="1" 
+            type="radio" 
+            name="star"
+            )
+          label(for="star1") ☆
           input(type="hidden" name="recipe_id" value=recipe._id)
-          button(type="submit") Rate
+          button(type="submit").button-1 Rate
+          .clear
+
