@@ -102,8 +102,9 @@ html
             if recipe.image
               img(src=recipe.image, alt=recipe.title)
             h3 #{recipe.title}
-            p #{recipe.description}
             .cuisine #{recipe.cuisine}
+            .recipe-card-p
+              p #{recipe.description}
             .col-12
               each star, starIndex in [1, 2, 3, 4, 5]
                 span(id='recipe' + index + '-star' + (starIndex + 1)).fa.fa-star

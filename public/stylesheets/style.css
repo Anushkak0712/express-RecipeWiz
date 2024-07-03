@@ -87,7 +87,9 @@ h1 {
   transform: translateY(-10px);
 }
 .recipe-card img {
-  width: 100%;
+  width: 385px;
+  height: 240px;
+  object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
 .recipe-card h3 {
@@ -96,9 +98,14 @@ h1 {
   color: #bea218;
 }
 .recipe-card p {
-  color: #e6e6e6;
+  color: #e6e6e6d1;
   font-size: 14px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space:nowrap;
 }
+
 .recipe-card .cuisine {
   color: #999;
   font-size: 12px;
@@ -134,7 +141,6 @@ h1 {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
-  border: 2px solid #ccc;
 }
 .cuisine-caption {
   font-size: 16px;
